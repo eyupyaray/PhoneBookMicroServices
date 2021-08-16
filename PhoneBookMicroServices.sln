@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PersonService", "PersonServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Services.Person", "Services\PersonServices\PhoneBook.Services.Person\PhoneBook.Services.Person.csproj", "{440C0005-26C1-43A9-9CEF-645093C91327}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E86AD2FB-A678-4FA6-B828-5E0EEF063F57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Shared", "Shared\PhoneBook.Shared\PhoneBook.Shared.csproj", "{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,10 @@ Global
 		{440C0005-26C1-43A9-9CEF-645093C91327}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{440C0005-26C1-43A9-9CEF-645093C91327}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{440C0005-26C1-43A9-9CEF-645093C91327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +34,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EE18B63C-F600-4140-83E7-08BAB1785C2A} = {13A0772E-FE3F-43EA-A52F-2FF437800ECB}
 		{440C0005-26C1-43A9-9CEF-645093C91327} = {EE18B63C-F600-4140-83E7-08BAB1785C2A}
+		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E} = {E86AD2FB-A678-4FA6-B828-5E0EEF063F57}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7CE4BC49-6398-46FC-BBF5-36D3C915C7FD}
