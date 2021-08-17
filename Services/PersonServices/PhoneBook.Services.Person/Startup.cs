@@ -5,7 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using PhoneBook.Services.Person.Services;
+using PhoneBook.Services.Person.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +28,19 @@ namespace PhoneBook.Services.Person
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IContactTypeService, ContactTypeService>();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
+
+            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
+
+            services.AddSingleton<IDatabaseSettings>(db =>
+            {
+                return db.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PhoneBook.Services.Person", Version = "v1" });
