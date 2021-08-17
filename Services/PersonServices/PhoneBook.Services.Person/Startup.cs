@@ -29,6 +29,8 @@ namespace PhoneBook.Services.Person
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IContactTypeService, ContactTypeService>();
+            services.AddScoped<IPersonService, PersonService>();
+            services.AddScoped<IContactService, ContactService>();
             services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();

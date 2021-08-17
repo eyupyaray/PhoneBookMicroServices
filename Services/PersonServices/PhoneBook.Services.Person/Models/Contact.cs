@@ -9,6 +9,9 @@ namespace PhoneBook.Services.Person.Models
 {
     public class Contact
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string UUID { get; set; }
         [BsonRepresentation(BsonType.ObjectId)]
         public string ContactTypeUUID { get; set; }
         public string Content { get; set; }

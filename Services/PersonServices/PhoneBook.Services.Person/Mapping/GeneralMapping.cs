@@ -13,6 +13,11 @@ namespace PhoneBook.Services.Person.Mapping
         public GeneralMapping()
         {
             CreateMap<ContactTypeDto, ContactType>().ReverseMap();
+            CreateMap<ContactCreateDto, Contact>().ReverseMap();
+            CreateMap<ContactDetailDto, Contact>().ReverseMap();
+            CreateMap<PersonCreateDto, Models.Person>().ReverseMap();
+            CreateMap<PersonDto, Models.Person>().ReverseMap();
+            CreateMap<PersonDetailDto, Models.Person>().ReverseMap();
         }
     }
 }

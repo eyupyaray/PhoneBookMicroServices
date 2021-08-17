@@ -46,7 +46,7 @@ namespace PhoneBook.Services.Person.Services
 
             await _contactTypeCollection.InsertOneAsync(contactTypeDto);
 
-            return ProcessResult<ContactTypeDto>.Success(_mapper.Map<ContactTypeDto>(contactType), 200);
+            return ProcessResult<ContactTypeDto>.Success(_mapper.Map<ContactTypeDto>(contactTypeDto), 200);
         }
     }
 }
