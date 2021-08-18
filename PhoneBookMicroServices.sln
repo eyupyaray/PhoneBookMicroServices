@@ -7,11 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{13
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PersonService", "PersonService", "{EE18B63C-F600-4140-83E7-08BAB1785C2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Services.Person", "Services\PersonServices\PhoneBook.Services.Person\PhoneBook.Services.Person.csproj", "{440C0005-26C1-43A9-9CEF-645093C91327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Services.Person", "Services\PersonServices\PhoneBook.Services.Person\PhoneBook.Services.Person.csproj", "{440C0005-26C1-43A9-9CEF-645093C91327}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E86AD2FB-A678-4FA6-B828-5E0EEF063F57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Shared", "Shared\PhoneBook.Shared\PhoneBook.Shared.csproj", "{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Shared", "Shared\PhoneBook.Shared\PhoneBook.Shared.csproj", "{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportService", "ReportService", "{7CE35861-BE9A-4CCB-B354-41E27637EAB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.Services.Report", "ReportService\PhoneBook.Services.Report\PhoneBook.Services.Report.csproj", "{8E6571F7-312F-40B1-A75A-D13A0C9CE7D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,10 @@ Global
 		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E6571F7-312F-40B1-A75A-D13A0C9CE7D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6571F7-312F-40B1-A75A-D13A0C9CE7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6571F7-312F-40B1-A75A-D13A0C9CE7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6571F7-312F-40B1-A75A-D13A0C9CE7D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +43,8 @@ Global
 		{EE18B63C-F600-4140-83E7-08BAB1785C2A} = {13A0772E-FE3F-43EA-A52F-2FF437800ECB}
 		{440C0005-26C1-43A9-9CEF-645093C91327} = {EE18B63C-F600-4140-83E7-08BAB1785C2A}
 		{B9083DF4-689B-4BEC-938E-3283F1BE3E9E} = {E86AD2FB-A678-4FA6-B828-5E0EEF063F57}
+		{7CE35861-BE9A-4CCB-B354-41E27637EAB8} = {13A0772E-FE3F-43EA-A52F-2FF437800ECB}
+		{8E6571F7-312F-40B1-A75A-D13A0C9CE7D2} = {7CE35861-BE9A-4CCB-B354-41E27637EAB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7CE4BC49-6398-46FC-BBF5-36D3C915C7FD}
