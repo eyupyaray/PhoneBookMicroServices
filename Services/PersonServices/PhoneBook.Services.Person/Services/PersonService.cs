@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using PhoneBook.Services.Person.DTOs;
 using PhoneBook.Services.Person.Models;
@@ -15,6 +17,7 @@ namespace PhoneBook.Services.Person.Services
     {
         private readonly IMongoCollection<Models.Person> _personCollection;
         private readonly IMongoCollection<Contact> _contactCollection;
+        private readonly IMongoCollection<ContactType> _contactTypeCollection;
 
         private readonly IMapper _mapper;
 
@@ -26,6 +29,7 @@ namespace PhoneBook.Services.Person.Services
 
             _personCollection = database.GetCollection<Models.Person>(databaseSettings.PersonCollectionName);
             _contactCollection = database.GetCollection<Contact>(databaseSettings.ContactCollectionName);
+            _contactTypeCollection = database.GetCollection<ContactType>(databaseSettings.ContactTypeCollectionName);
 
             _mapper = mapper;
         }
@@ -60,10 +64,9 @@ namespace PhoneBook.Services.Person.Services
 
             if (result.DeletedCount > 0)
             {
-                if (person.ContactList != null && person.ContactList.Count > 0)
-                {
-                    var resultContact = await _contactCollection.DeleteOneAsync(contact => person.ContactList.Contains(contact.UUID));
-                }
+
+                var resultContact = await _contactCollection.DeleteManyAsync(contact => contact.PersonUUID == personUUID);
+
                 return ProcessResult<NoContent>.Success(204);
             }
 
@@ -73,20 +76,33 @@ namespace PhoneBook.Services.Person.Services
 
         public async Task<ProcessResult<PersonDetailDto>> GetPersonWithDetailByPersonUUIDAsync(string personUUID)
         {
-            //to do
-            //var person = await _personCollection.Aggregate().Match(person => person.UUID == personUUID)
-            //                                    .Lookup("Contact", "ContactList", "_id", "asContacts")
-            //                                    .Lookup("ContactType", "ContactTypeUUID", "_id", "asContactType")
-            //                                    .FirstAsync();
 
-            //if (person == null)
-            //{
-            //    return ProcessResult<PersonDetailDto>.Error("There is no person", 404);
-            //}
+            PersonDetailDto personDetail = new PersonDetailDto();
 
-            //return ProcessResult<PersonDetailDto>.Success(_mapper.Map<PersonDetailDto>(person), 200);
+            var personInformation = _personCollection.FindAsync(person => person.UUID == personUUID).Result.FirstOrDefault();
 
-            return ProcessResult<PersonDetailDto>.Success(new PersonDetailDto(), 200);
+            if (personInformation == null)
+                return ProcessResult<PersonDetailDto>.Error("Person not found", 404);
+
+            personDetail = _mapper.Map<PersonDetailDto>(personInformation);
+
+            var contactList = (from person in _personCollection.AsQueryable()
+                               join contact in _contactCollection.AsQueryable() on person.UUID equals contact.PersonUUID
+                               join contactType in _contactTypeCollection.AsQueryable() on contact.ContactTypeUUID equals contactType.UUID
+                               where person.UUID == personUUID
+                               select new ContactDetailDto
+                               {
+                                   UUID = contact.UUID,
+                                   ContactType = contactType.Name,
+                                   Content = contact.Content
+                               }).ToList();
+
+            personDetail.ContactList = contactList;
+
+
+            return ProcessResult<PersonDetailDto>.Success(_mapper.Map<PersonDetailDto>(personDetail), 200);
         }
+
+
     }
 }

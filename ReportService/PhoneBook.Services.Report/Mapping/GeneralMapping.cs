@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PhoneBook.Services.Report.DTOs;
+using PhoneBook.Services.Report.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace PhoneBook.Services.Report.Mapping
         public GeneralMapping()
         {
             CreateMap<ReportDto, Models.Report>().ReverseMap();
+            CreateMap<ReportContentDto, ReportContent>().ReverseMap();
+            CreateMap<Models.Report, ReportDetailDto>().ReverseMap();
         }
     }
 }

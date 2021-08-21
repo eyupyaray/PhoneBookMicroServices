@@ -34,5 +34,12 @@ namespace PhoneBook.Services.Report.Controllers
             var response = await _reportService.CreateReportAsync();
             return CreateActionResultInstance(response);
         }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetReportWithDetailByReportUUID(string reportUUID)
+        {
+            var response = await _reportService.GetReportWithDetailByReportUUIDAsync(reportUUID);
+            return CreateActionResultInstance(response);
+        }
     }
 }

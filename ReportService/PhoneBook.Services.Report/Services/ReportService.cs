@@ -51,5 +51,18 @@ namespace PhoneBook.Services.Report.Services
 
             return ProcessResult<ReportDto>.Success(_mapper.Map<ReportDto>(report), 200);
         }
+
+        public async Task<ProcessResult<ReportDetailDto>> GetReportWithDetailByReportUUIDAsync(string reportUUID)
+        {
+
+            var report =  _reportCollection.FindAsync(report => report.UUID == reportUUID).Result.FirstOrDefault();
+
+            if (report == null)
+            {
+                return ProcessResult<ReportDetailDto>.Error("There is no contact type", 404);
+            }
+
+            return ProcessResult<ReportDetailDto>.Success(_mapper.Map<ReportDetailDto>(report), 200);
+        }
     }
 }

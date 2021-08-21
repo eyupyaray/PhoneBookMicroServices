@@ -11,5 +11,6 @@ namespace PhoneBook.Services.Report.Services
     {
         Task<ProcessResult<List<ReportDto>>> GetAllReportsAsync();
         Task<ProcessResult<ReportDto>> CreateReportAsync();
+        Task<ProcessResult<ReportDetailDto>> GetReportWithDetailByReportUUIDAsync(string reportUUID);
     }
 }

@@ -15,6 +15,5 @@ namespace PhoneBook.Services.Person.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string CompanyName { get; set; }
-        public List<string> ContactList { get; set; }
     }
 }

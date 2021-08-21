@@ -42,10 +42,6 @@ namespace PhoneBook.Services.Person.Services
 
             var personDto = _mapper.Map<Models.Person>(person);
 
-            if (personDto.ContactList == null)
-                personDto.ContactList = new List<string>();
-
-            personDto.ContactList.Add(contactDto.UUID);
             await _personCollection.FindOneAndReplaceAsync(person => person.UUID == personDto.UUID, personDto);
 
 
@@ -54,18 +50,10 @@ namespace PhoneBook.Services.Person.Services
 
         public async Task<ProcessResult<NoContent>> DeleteContactFromAsync(string contactUUID)
         {
-            var person = _personCollection.FindAsync(person => person.ContactList.Contains(contactUUID)).Result.FirstOrDefault();
-
-            var personDto = _mapper.Map<Models.Person>(person);
-
             var result = await _contactCollection.DeleteOneAsync(contact => contact.UUID == contactUUID);
 
             if (result.DeletedCount > 0)
             {
-                if (personDto.ContactList != null)
-                    personDto.ContactList.Remove(contactUUID);
-                await _personCollection.FindOneAndReplaceAsync(person => person.UUID == personDto.UUID, personDto);
-
                 return ProcessResult<NoContent>.Success(204);
             }
 

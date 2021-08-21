@@ -16,6 +16,6 @@ namespace PhoneBook.Services.Report.Models
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime ReportRequestData { get; set; }
         public string ReportStatus { get; set; }
-        public List<ReportContent> ReportContent { get; set; }
+        List<ReportContent> ReportContent { get; set; }
     }
 }
