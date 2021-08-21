@@ -14,8 +14,8 @@ namespace PhoneBook.Services.Report.Models
         public string UUID { get; set; }
 
         [BsonRepresentation(BsonType.DateTime)]
-        public DateTime ReportRequestData { get; set; }
+        public DateTime ReportRequestDate { get; set; }
         public string ReportStatus { get; set; }
-        List<ReportContent> ReportContent { get; set; }
+        public List<ReportContent> ReportContent { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace PhoneBook.Services.Report.DTOs
     public class ReportDetailDto
     {
         public string UUID { get; set; }
-        public DateTime ReportRequestData { get; set; }
+        public DateTime ReportRequestDate { get; set; }
         public string ReportStatus { get; set; }
-        public ReportContentDto ReportContent { get; set; }
+        public List<ReportContentDto> ReportContent { get; set; }
     }
 }

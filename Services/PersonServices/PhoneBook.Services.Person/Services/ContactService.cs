@@ -38,12 +38,6 @@ namespace PhoneBook.Services.Person.Services
 
             await _contactCollection.InsertOneAsync(contactDto);
 
-            var person = _personCollection.FindAsync(person => person.UUID == contact.PersonUUID).Result.FirstOrDefault();
-
-            var personDto = _mapper.Map<Models.Person>(person);
-
-            await _personCollection.FindOneAndReplaceAsync(person => person.UUID == personDto.UUID, personDto);
-
 
             return ProcessResult<NoContent>.Success(200);
         }

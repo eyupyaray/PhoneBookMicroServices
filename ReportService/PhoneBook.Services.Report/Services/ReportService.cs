@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using PhoneBook.Services.Report.DTOs;
 using PhoneBook.Services.Report.Settings;
+using PhoneBook.Shared.Messages;
 using PhoneBook.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace PhoneBook.Services.Report.Services
         {
             var report = new Models.Report();
             report.ReportStatus = "Hazırlanıyor";
-            report.ReportRequestData = DateTime.Now;
+            report.ReportRequestDate = DateTime.Now;
 
             await _reportCollection.InsertOneAsync(report);
 

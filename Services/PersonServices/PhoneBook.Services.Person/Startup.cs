@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using PhoneBook.Services.Person.Consumers;
 using PhoneBook.Services.Person.Services;
 using PhoneBook.Services.Person.Settings;
 using System;
@@ -28,6 +30,28 @@ namespace PhoneBook.Services.Person
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<ReportDetailMessageCommandConsumer>();
+                //default port: 5672
+                x.UsingRabbitMq((context, config) =>
+                {
+                    config.Host(Configuration["RabbitMQUrl"], "/", host =>
+                    {
+
+                        host.Username("guest");
+                        host.Password("guest");
+                    });
+
+                    config.ReceiveEndpoint("report-message-service", e =>
+                    {
+                        e.ConfigureConsumer<ReportDetailMessageCommandConsumer>(context);
+                    });
+                });
+            });
+
+            services.AddMassTransitHostedService();
+
             services.AddScoped<IContactTypeService, ContactTypeService>();
             services.AddScoped<IPersonService, PersonService>();
             services.AddScoped<IContactService, ContactService>();
