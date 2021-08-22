@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="PersonService\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ReportService\PhoneBook.Services.Report\PhoneBook.Services.Report.csproj" />
+    <ProjectReference Include="..\..\Services\PersonServices\PhoneBook.Services.Person\PhoneBook.Services.Person.csproj" />
+    <ProjectReference Include="..\..\Shared\PhoneBook.Shared\PhoneBook.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

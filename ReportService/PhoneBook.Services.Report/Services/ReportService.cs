@@ -34,7 +34,7 @@ namespace PhoneBook.Services.Report.Services
 
             if (reports == null || reports.Count == 0)
             {
-                return ProcessResult<List<ReportDto>>.Error("There is no contact type", 404);
+                return ProcessResult<List<ReportDto>>.Error("There is no report", 404);
             }
 
             return ProcessResult<List<ReportDto>>.Success(_mapper.Map<List<ReportDto>>(reports), 200);
@@ -60,7 +60,7 @@ namespace PhoneBook.Services.Report.Services
 
             if (report == null)
             {
-                return ProcessResult<ReportDetailDto>.Error("There is no contact type", 404);
+                return ProcessResult<ReportDetailDto>.Error("There is no report", 404);
             }
 
             return ProcessResult<ReportDetailDto>.Success(_mapper.Map<ReportDetailDto>(report), 200);
