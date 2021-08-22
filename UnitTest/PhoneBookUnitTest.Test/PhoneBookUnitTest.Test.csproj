@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PersonService\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\ReportService\PhoneBook.Services.Report\PhoneBook.Services.Report.csproj" />
     <ProjectReference Include="..\..\Services\PersonServices\PhoneBook.Services.Person\PhoneBook.Services.Person.csproj" />
     <ProjectReference Include="..\..\Shared\PhoneBook.Shared\PhoneBook.Shared.csproj" />
