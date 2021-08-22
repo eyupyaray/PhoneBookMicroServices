@@ -81,23 +81,23 @@ namespace PhoneBookUnitTest.Test.PersonService
         }
 
         [Fact]
-        public async void CreateContactTypeAsync_NotFoundReturnContactTypeList()
+        public async void CreateContactTypeAsync_SuccessReturnContactType()
         {
-            var contentType = contactTypes.First();
+            var contactType = contactTypes.First();
 
-            var resultSet = ProcessResult<ContactTypeDto>.Success(contentType, 200);
+            var resultSet = ProcessResult<ContactTypeDto>.Success(contactType, 200);
 
-            _mockContactTypeService.Setup(x => x.CreateContactTypeAsync(contentType)).ReturnsAsync(resultSet);
+            _mockContactTypeService.Setup(x => x.CreateContactTypeAsync(contactType)).ReturnsAsync(resultSet);
 
-            var result = await _contactTypeController.CreateContactType(contentType);
+            var result = await _contactTypeController.CreateContactType(contactType);
 
             var successResult = Assert.IsType<ObjectResult>(result);
 
             var resultContactType = Assert.IsAssignableFrom<ProcessResult<ContactTypeDto>>(successResult.Value);
 
-            _mockContactTypeService.Verify(x => x.CreateContactTypeAsync(contentType), Times.Once);
+            _mockContactTypeService.Verify(x => x.CreateContactTypeAsync(contactType), Times.Once);
 
-            Assert.Equal(contentType.Name, resultContactType.Data.Name);
+            Assert.Equal(contactType.Name, resultContactType.Data.Name);
 
         }
 
